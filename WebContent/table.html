@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.center {
+    margin: auto;
+    width: 80%;
+    
+}
+.right {
+    position: absolute;
+    left: 0px;
+    padding: 10px;
+}
+</style>
+<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="bootstrap.table-editor.css">
+
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body >
+<div class="center">
+<table id="table1" class="table table-bordered table-striped" >
+  <tr id="firstrow">
+    <th>id</th>
+    <th>name</th> 
+    <th>dept</th>
+     <th>superVisorId</th>
+  </tr>
+  
+  </table>
+  </div>
+  <div class="right">
+  <button type="button" class="btn btn-primary" onclick="goBack()">Back</button>
+  </div>
+  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<script src="js/gettable.js"></script>
+<script src="js/jquery.tabledit.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+</body>
+</html>
