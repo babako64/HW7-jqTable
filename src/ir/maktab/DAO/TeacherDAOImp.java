@@ -22,6 +22,12 @@ public class TeacherDAOImp implements TeacherDAO {
 
 	private final static String TEACHER_TABLE = "profesor";
 
+
+	/**
+	 * Add new teacher to Database
+	 * 
+	 * @param {object} teah
+	 */
 	@Override
 	public void add(Teacher tech) {
 		Connection conn = null;
@@ -76,6 +82,11 @@ public class TeacherDAOImp implements TeacherDAO {
 
 	}
 
+	/**
+	 * Get All teacher information from database
+	 * 
+	 * @return {list} teacher
+	 */
 	@Override
 	public ArrayList<Teacher> getAll() {
 		Connection conn = null;
@@ -125,6 +136,13 @@ public class TeacherDAOImp implements TeacherDAO {
 		return techList;
 	}
 
+	/**
+	 * Get teacher information from Database
+	 * 
+	 * @param {int} id
+	 * 
+	 * @return {list}
+	 */
 	@Override
 	public ArrayList<Teacher> getTeacher(int fid) {
 
@@ -174,6 +192,12 @@ public class TeacherDAOImp implements TeacherDAO {
 		return teachList;
 	}
 
+	/**
+	 * 
+	 * Remove teacher
+	 * 
+	 * @param {int} id
+	 */
 	@Override
 	public void remove(int id) {
 		Connection conn = null;
@@ -198,6 +222,13 @@ public class TeacherDAOImp implements TeacherDAO {
 
 	}
 
+	/**
+	 * 
+	 * Update teacher information
+	 * 
+	 * @param {int,string,string}
+	 */
+	
 	@Override
 	public void Update(int id, String TechName, String add) {
 		Connection conn = null;

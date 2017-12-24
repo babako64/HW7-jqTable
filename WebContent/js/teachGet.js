@@ -1,3 +1,9 @@
+
+/*
+ * Get data from rest method
+ * 
+ */
+
 jQuery.ajax({
             url: "http://localhost:8080/HW7-jqTable/api/teacher",
             type: "GET",

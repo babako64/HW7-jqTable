@@ -20,6 +20,11 @@ public class StudentDAOImp implements StudentDAO {
 	private static final String USER = "root";
 	private static final String PASS = "";
 
+	/**
+	 * Add new teacher to Database
+	 * 
+	 * @param {object} student
+	 */
 	@Override
 	public void add(Student st) {
 
@@ -74,7 +79,15 @@ public class StudentDAOImp implements StudentDAO {
 		}
 
 	}
-
+	
+	
+	/**
+	 * Get student information from Database
+	 * 
+	 * @param {int} id
+	 * 
+	 * @return {list}
+	 */
 	@Override
 	public ArrayList<Student> getStudent(int fId) {
 		Connection conn = null;
@@ -125,6 +138,12 @@ public class StudentDAOImp implements StudentDAO {
 		return stList;
 	}
 
+	/**
+	 * 
+	 * Remove student by id from database
+	 * 
+	 * @param {int} id
+	 */
 	@Override
 	public void remove(int id) {
 
@@ -150,6 +169,11 @@ public class StudentDAOImp implements StudentDAO {
 
 	}
 
+	/**
+	 * Get All student information from database
+	 * 
+	 * @return {list} teacher
+	 */
 	@Override
 	public ArrayList<Student> getAll() {
 
@@ -201,6 +225,12 @@ public class StudentDAOImp implements StudentDAO {
 		return stList;
 	}
 
+	/**
+	 * 
+	 * Update student information
+	 * 
+	 * @param {int,string,string}
+	 */
 	@Override
 	public void Update(int id, String stName, String dept, int profID) {
 

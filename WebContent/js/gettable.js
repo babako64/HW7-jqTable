@@ -1,3 +1,9 @@
+/**
+ * Get data from rest method
+ * 
+ * @returns {Json} objects
+ */
+
 jQuery.ajax({
             url: "http://localhost:8080/HW7-jqTable/api/students",
             type: "GET",
@@ -13,6 +19,12 @@ jQuery.ajax({
 
         });
 
+/**
+ * Create new rows in table
+ * 
+ * @param data
+ * @returns
+ */
 function drawTable(data) {
 	
     for (var i = 0; i < data.length; i++) {
@@ -38,6 +50,12 @@ function drawTable(data) {
     		"</tr>");
     $( "tr" ).first().after(row);
 }
+
+/**
+ * Fill rows with fild
+ * @param rowData
+ * @returns
+ */
 
 function drawRow(rowData) {
     var row = $("<tr />")

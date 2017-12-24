@@ -21,12 +21,22 @@ public class TeacherApi {
 
 TeacherDAOImp teDAO = new TeacherDAOImp();
 	
+/**
+ * Insert new teacher to Database
+ * @param teach
+ */
+
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addStudent(Teacher teach) {
 		
 		teDAO.add(teach);
 	}
+	
+	/**
+	 * Delete one teacher from Database
+	 * @param stid
+	 */
 	
 	@DELETE
 	@Path("/{stid}")
@@ -37,12 +47,24 @@ TeacherDAOImp teDAO = new TeacherDAOImp();
 		
 	}
 	
+	/**
+	 * 
+	 * Delete All teachers from Database
+	 */
+	
 	@DELETE
 	public void delete() {
 		
 		teDAO.removeAll();
 		
 	}
+	
+	/**
+	 * Update teacher Data
+	 * 
+	 * @param teach
+	 * @param id
+	 */
 	
 	@PUT
 	@Path("/{id}")
@@ -52,6 +74,13 @@ TeacherDAOImp teDAO = new TeacherDAOImp();
 		teDAO.Update(teach.getId(), teach.getName(), teach.getAddress());
 		
 	}
+	
+	/**
+	 * return teacher
+	 * 
+	 * @param id
+	 * @return
+	 */
 	
 	@GET
 	//@Path("/{id}")
@@ -66,6 +95,12 @@ TeacherDAOImp teDAO = new TeacherDAOImp();
 		System.out.println(teach.getId() + teach.getName() + teach.getAddress());
 		return stList;
 	}
+	
+	/**
+	 * return All teachers
+	 * 
+	 * @return
+	 */
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

@@ -371,7 +371,7 @@ if (typeof jQuery === 'undefined') {
         function ajax(action)
         {
             var serialize = $table.find('.tabledit-input').serialize() + '&action=' + action;
-          //  var formData = JSON.parse($table.find('.tabledit-input').serializeArray());
+          
             var o = {};
                 var a = $table.find('.tabledit-input').serializeArray();
                  $.each(a, function () {
@@ -386,9 +386,7 @@ if (typeof jQuery === 'undefined') {
                 });
                 
                  if(action=="delete"){
-                	// $(this).parents('td');
-                	// $($($(this).parents('td')).parent('tr')).remove();
-                	// $lastDeletedRow
+                	
                 	 if($table.attr("id")=="table1"){
                 	 $($lastDeletedRow).remove();
                 	 $.ajax({
@@ -459,11 +457,11 @@ if (typeof jQuery === 'undefined') {
                 		      //On error do this
                 		        if (xhr.status == 200) {
 
-                		            alert(ajaxOptions);
+                		           // alert(ajaxOptions);
                 		        }
                 		        else {
-                		            alert(xhr.status);
-                		            alert(thrownError);
+                		          //  alert(xhr.status);
+                		           // alert(thrownError);
                 		        }
                 		    }
                 		 });
@@ -482,11 +480,11 @@ if (typeof jQuery === 'undefined') {
                   		      //On error do this
                   		        if (xhr.status == 200) {
 
-                  		            alert(ajaxOptions);
+                  		            //alert(ajaxOptions);
                   		        }
                   		        else {
-                  		            alert(xhr.status);
-                  		            alert(thrownError);
+                  		          //  alert(xhr.status);
+                  		            //alert(thrownError);
                   		        }
                   		    }
                   		 });
@@ -501,19 +499,10 @@ if (typeof jQuery === 'undefined') {
                 	 val["superVisorId"]= $('#sup').val();
                 	  
                 	  var o1 = {};
-                      //var a = $table.find('.tabledit-input').serializeArray();
-                       $.each(val, function () {
-                           if (o1[this.name] !== undefined) {
-                              if (!o1[this.name].push) {
-                                   o1[this.name] = [o1[this.name]];
-                               }
-                               o1[this.name].push(this.value || '');
-                          } else {
-                              o1[this.name] = this.value || '';
-                          }
-                      });
+                      
+
                 	  
-       //         	 console.log(JSON.stringify(val));
+      
                 	 $.ajax({
               		   url: "http://localhost:8080/HW7-jqTable/api/students",
               		   type: 'POST',
@@ -541,13 +530,6 @@ if (typeof jQuery === 'undefined') {
               		    }
               		 });
                 	 
-//                	 var row = $("<tr />");
-//                	 
-//                	    $("#table1").append(row); 
-//                	    row.append($("<td>" + val["id"] + "</td>"));
-//                	    row.append($("<td>" + val["name"] + "</td>"));
-//                	    row.append($("<td>" + val["dept"] + "</td>"));
-//                	    row.append($("<td>" + val["superVisorId"] + "</td>"));
                 	    
                 	    $("#table1").find("tr:gt(0)").remove();
                 	    
@@ -561,17 +543,7 @@ if (typeof jQuery === 'undefined') {
                     	 val1["address"]= $('#address').val();
                     	  
                     	  var o2 = {};
-                          //var a = $table.find('.tabledit-input').serializeArray();
-                           $.each(val1, function () {
-                               if (o2[this.name] !== undefined) {
-                                  if (!o2[this.name].push) {
-                                       o2[this.name] = [o2[this.name]];
-                                   }
-                                   o2[this.name].push(this.value || '');
-                              } else {
-                                  o2[this.name] = this.value || '';
-                              }
-                          });
+                           
                     	  
                     	 console.log(JSON.stringify(val1));
                     	 $.ajax({

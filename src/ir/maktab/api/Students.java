@@ -21,12 +21,22 @@ public class Students {
 
 StudentDAOImp stDAO = new StudentDAOImp();
 	
+/**
+ * Insert new student to Database
+ * @param teach
+ */
+
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addStudent(Student st) {
 		
 		stDAO.add(st);
 	}
+	
+	/**
+	 * Delete one student from Database
+	 * @param stid
+	 */
 	
 	@DELETE
 	@Path("/{stid}")
@@ -37,12 +47,25 @@ StudentDAOImp stDAO = new StudentDAOImp();
 		
 	}
 	
+	/**
+	 * 
+	 * Delete All students from Database
+	 */
+	
 	@DELETE
 	public void delete() {
 		
 		stDAO.removeAll();
 		
 	}
+	
+
+	/**
+	 * Update student Data
+	 * 
+	 * @param teach
+	 * @param id
+	 */
 	
 	@PUT
 	@Path("/{id}")
@@ -52,6 +75,13 @@ StudentDAOImp stDAO = new StudentDAOImp();
 		stDAO.Update(st.getId(), st.getName(), st.getDept(), st.getSuperVisorId());
 		
 	}
+	
+	/**
+	 * return student Data
+	 * 
+	 * @param id
+	 * @return
+	 */
 	
 	@GET
 	//@Path("/{id}")
@@ -66,6 +96,12 @@ StudentDAOImp stDAO = new StudentDAOImp();
 		System.out.println(st.getId() + st.getName() + st.getDept() + st.getSuperVisorId());
 		return stList;
 	}
+	
+	/**
+	 * return All students
+	 * 
+	 * @return
+	 */
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
