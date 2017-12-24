@@ -389,11 +389,11 @@ if (typeof jQuery === 'undefined') {
                 	// $(this).parents('td');
                 	// $($($(this).parents('td')).parent('tr')).remove();
                 	// $lastDeletedRow
-                	 
+                	 if($table.attr("id")=="table1"){
                 	 $($lastDeletedRow).remove();
                 	 $.ajax({
 
-                         url: "http://localhost:8080/HW6-stuprof/api/students/"+o.id,
+                         url: "http://localhost:8080/HW7-jqTable/api/students/"+o.id,
 
                          type: "DELETE",
 
@@ -415,10 +415,38 @@ if (typeof jQuery === 'undefined') {
                          }
 
                      });
+                	 }else if($table.attr("id")=="table2"){
+                		 console.log("table2");
+                		 $($lastDeletedRow).remove();
+                    	 $.ajax({
+
+                             url: "http://localhost:8080/HW7-jqTable/api/teacher/"+o.id,
+
+                             type: "DELETE",
+
+                             dataType: "json",
+
+                             data: {stid:'2'},
+                             contentType: 'application/json; charset=utf-8',
+                             
+                             success: function (data, textStatus, xhr) {
+
+                                 console.log(data);
+
+                             },
+
+                             error: function (xhr, textStatus, errorThrown) {
+
+                                 console.log('Error in Operation');
+
+                             }
+
+                         });
+                	 }
                  } else if(action=="edit"){
-                	
+                	 if($table.attr("id")=="table1"){
                 	 $.ajax({
-                		   url: "http://localhost:8080/HW6-stuprof/api/students/"+o.id,
+                		   url: "http://localhost:8080/HW7-jqTable/api/students/"+o.id,
                 		   type: 'PUT',
                 		   contentType:'application/json',
                 		   data: JSON.stringify(o),
@@ -439,8 +467,32 @@ if (typeof jQuery === 'undefined') {
                 		        }
                 		    }
                 		 });
+                	 }else {
+                		 $.ajax({
+                  		   url: "http://localhost:8080/HW7-jqTable/api/teacher/"+o.id,
+                  		   type: 'PUT',
+                  		   contentType:'application/json',
+                  		   data: JSON.stringify(o),
+                  		   dataType:'json',
+                  		   success: function(data){
+                  		     //On ajax success do this
+                  		     alert(data);
+                  		      },
+                  		   error: function(xhr, ajaxOptions, thrownError) {
+                  		      //On error do this
+                  		        if (xhr.status == 200) {
+
+                  		            alert(ajaxOptions);
+                  		        }
+                  		        else {
+                  		            alert(xhr.status);
+                  		            alert(thrownError);
+                  		        }
+                  		    }
+                  		 });
+                	 }
                  }else if(action=="add"){
-                	 
+                	 if($table.attr("id")=="table1"){
                 	// var serialize1 = $('#t').serialize() + '&action=' + action;
                 	 var val = {};
                 	 val["name"]= $('#name').val();
@@ -463,7 +515,7 @@ if (typeof jQuery === 'undefined') {
                 	  
        //         	 console.log(JSON.stringify(val));
                 	 $.ajax({
-              		   url: "http://localhost:8080/HW6-stuprof/api/students",
+              		   url: "http://localhost:8080/HW7-jqTable/api/students",
               		   type: 'POST',
               		   contentType:'application/json',
               		   data: JSON.stringify(val),
@@ -500,6 +552,61 @@ if (typeof jQuery === 'undefined') {
                 	    $("#table1").find("tr:gt(0)").remove();
                 	    
                 	    $.getScript('js/gettable.js');
+                	    
+                	 }else{
+                		 
+                		 var val1 = {};
+                    	 val1["id"]= $('#id1').val();
+                    	 val1["name"]=$('#name1').val();
+                    	 val1["address"]= $('#address').val();
+                    	  
+                    	  var o2 = {};
+                          //var a = $table.find('.tabledit-input').serializeArray();
+                           $.each(val1, function () {
+                               if (o2[this.name] !== undefined) {
+                                  if (!o2[this.name].push) {
+                                       o2[this.name] = [o2[this.name]];
+                                   }
+                                   o2[this.name].push(this.value || '');
+                              } else {
+                                  o2[this.name] = this.value || '';
+                              }
+                          });
+                    	  
+                    	 console.log(JSON.stringify(val1));
+                    	 $.ajax({
+                  		   url: "http://localhost:8080/HW7-jqTable/api/teacher",
+                  		   type: 'POST',
+                  		   contentType:'application/json',
+                  		   data: JSON.stringify(val1),
+                  		   dataType:'json',
+                  		   success: function(data){
+                  		     //On ajax success do this
+                  		   //  alert(data);
+                  		   $("#id1").val('');
+                  		   $("#name1").val('');
+                  		   $("#address").val('');
+                  		  
+                  		      },
+                  		   error: function(xhr, ajaxOptions, thrownError) {
+                  		      //On error do this
+                  		        if (xhr.status == 200) {
+
+                  		          //  alert(ajaxOptions);
+                  		        }
+                  		        else {
+                  		          //  alert(xhr.status);
+                  		          //  alert(thrownError);
+                  		        }
+                  		    }
+                  		 });
+                    	 
+                    	    
+                    	    $("#table2").find("tr:gt(0)").remove();
+                    	    
+                    	    $.getScript('js/teachGet.js');
+                		 
+                	 }
                  }
                  
             console.log(o);
@@ -560,7 +667,7 @@ if (typeof jQuery === 'undefined') {
 
                     // Get current state before reset to view mode.
                     var activated = $(this).hasClass('active');
-
+                    console.log($table);
                     var $td = $(this).parents('td');
 
                     Delete.reset($td);
@@ -623,7 +730,7 @@ if (typeof jQuery === 'undefined') {
                     event.preventDefault();
 
                     var $button = $(this);
-
+                  
                     // Get current state before reset to view mode.
                     var activated = $button.hasClass('active');
 

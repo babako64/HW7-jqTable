@@ -11,6 +11,9 @@ public class Teacher {
 		this.name = name;
 		this.address = address;
 	}
+	public Teacher() {
+		
+	}
 	public int getId() {
 		return id;
 	}
