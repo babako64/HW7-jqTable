@@ -389,6 +389,7 @@ if (typeof jQuery === 'undefined') {
                 	// $(this).parents('td');
                 	// $($($(this).parents('td')).parent('tr')).remove();
                 	// $lastDeletedRow
+                	 
                 	 $($lastDeletedRow).remove();
                 	 $.ajax({
 
