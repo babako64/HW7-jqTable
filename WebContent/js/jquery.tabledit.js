@@ -451,7 +451,7 @@ if (typeof jQuery === 'undefined') {
                 		   dataType:'json',
                 		   success: function(data){
                 		     //On ajax success do this
-                		     alert(data);
+                		   //  alert(data);
                 		      },
                 		   error: function(xhr, ajaxOptions, thrownError) {
                 		      //On error do this
@@ -474,7 +474,7 @@ if (typeof jQuery === 'undefined') {
                   		   dataType:'json',
                   		   success: function(data){
                   		     //On ajax success do this
-                  		     alert(data);
+                  		   //  alert(data);
                   		      },
                   		   error: function(xhr, ajaxOptions, thrownError) {
                   		      //On error do this
@@ -516,6 +516,10 @@ if (typeof jQuery === 'undefined') {
               		   $("#name").val('');
               		   $("#dept").val('');
               		   $("#sup").val('');
+              		   
+              		  $("#table1").find("tr:gt(0)").remove();
+              	    
+              	    $.getScript('js/gettable.js');
               		      },
               		   error: function(xhr, ajaxOptions, thrownError) {
               		      //On error do this
@@ -531,9 +535,7 @@ if (typeof jQuery === 'undefined') {
               		 });
                 	 
                 	    
-                	    $("#table1").find("tr:gt(0)").remove();
-                	    
-                	    $.getScript('js/gettable.js');
+                	  
                 	    
                 	 }else{
                 		 
@@ -559,6 +561,10 @@ if (typeof jQuery === 'undefined') {
                   		   $("#name1").val('');
                   		   $("#address").val('');
                   		  
+                  		 $("#table2").find("tr:gt(0)").remove();
+                 	    
+                 	    $.getScript('js/teachGet.js');
+                  		   
                   		      },
                   		   error: function(xhr, ajaxOptions, thrownError) {
                   		      //On error do this
@@ -574,14 +580,12 @@ if (typeof jQuery === 'undefined') {
                   		 });
                     	 
                     	    
-                    	    $("#table2").find("tr:gt(0)").remove();
                     	    
-                    	    $.getScript('js/teachGet.js');
                 		 
                 	 }
                  }
                  
-            console.log(o);
+           
             var result = settings.onAjax(action, serialize);
 
             if (result === false) {

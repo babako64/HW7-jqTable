@@ -25,7 +25,7 @@ function drawTable(data) {
         drawRow(data[i]);
     }
     $('#table2').Tabledit({
-   	    url: 'http://localhost:8080/HW7-jqTable/api/teacher',
+   	   
    	    eventType: 'dblclick',
    	   
    	    columns: {
